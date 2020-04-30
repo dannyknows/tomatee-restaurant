@@ -13,11 +13,10 @@
       <span><%= @restaurant.location %></span>
     </div>
     <p><%= @restaurant.description %></p>
-    
-    <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-info'%>
-
-    <%= link_to 'Delete', restaurant_path(@restaurant), method: :delete, class: 'btn btn-danger', data: { confirm: "Really delete #{@restaurant.name}?"} %>
-
+    <% if @owner == current_user  %>
+      <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-info'%>
+      <%= link_to 'Delete', restaurant_path(@restaurant), method: :delete, class: 'btn btn-danger', data: { confirm: "Really delete #{@restaurant.name}?"} %>
+    <% end %>
     <%= link_to 'Back', restaurants_path, class: 'btn btn-primary' %> 
   </div>
 </div>
